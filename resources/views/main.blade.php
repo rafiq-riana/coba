@@ -59,7 +59,7 @@
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="/siswa"><i class="fa fa-circle-o"></i> Entri Data Siswa</a></li>
+                <li><a href="/SPP"><i class="fa fa-circle-o"></i> Entri Data SPP</a></li>
                 <li><a href="/kelas"><i class="fa fa-circle-o"></i> Entri Data Kelas</a></li>
               </ul>
             </li>

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kelas;
+use App\Models\Spp;
 use Illuminate\Http\Request;
 
-class KelasController extends Controller
+class SppController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,13 +14,12 @@ class KelasController extends Controller
      */
     public function index()
     {
-        
-        $kelas = Kelas::select('id_kelas', 'nama_kelas', 'jurusan')
-        ->orderBy('jurusan')
+        $spp = Spp::select('id_spp', 'tahun_spp', 'nominal_spp')
         ->whereNull('deleted_at')
+        ->orderBy('tahun_spp', 'asc')
         ->get();
 
-        return view('admin/kelas', ['kelas' => $kelas]);
+        return view('admin.spp', compact('spp'));
     }
 
     /**
@@ -42,16 +41,16 @@ class KelasController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'jurusan'=> 'required|max:30',
-            'nama_kelas'=> 'required|size:1'
+            'tahun_spp'=> 'required|size:4',
+            'nominal_spp'=> 'required'
         ]);
 
-        $kelas = new Kelas;
-        $kelas->nama_kelas = $request->nama_kelas;
-        $kelas->jurusan = $request->jurusan;
-        $kelas->save();
+        $spp = new Spp;
+        $spp->tahun_spp = $request->tahun_spp;
+        $spp->nominal_spp = $request->nominal_spp;
+        $spp->save();
 
-        return redirect('/kelas')->with('success', 'Data berhasil ditambahkan!');
+        return redirect('/spp')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -74,9 +73,8 @@ class KelasController extends Controller
     public function edit($id)
     {
         // dd($id);
-        $kelas = Kelas::find($id);
-        return view('admin.editkelas', compact('kelas'));
-        // return view('admin.editkelas', ['kelas' => $kelas]);
+        $spp = Spp::find($id);
+        return view('admin.editspp', compact('spp'));
     }
 
     /**
@@ -89,16 +87,16 @@ class KelasController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'jurusan'=> 'required|max:30',
-            'nama_kelas'=> 'required|max:1'
+            'tahun_spp'=> 'required|size:4',
+            'nominal_spp'=> 'required'
         ]);
         
-        $kelas = Kelas::find($id);
+        $spp = Spp::find($id);
         // dd($id);
-        $kelas->jurusan = $request->get('jurusan');
-        $kelas->nama_kelas = $request->get('nama_kelas');
-        $kelas->save();
-        return redirect('/kelas')->with('updated', 'Data Updated successfully!');
+        $spp->tahun_spp = $request->get('tahun_spp');
+        $spp->nominal_spp = $request->get('nominal_spp');
+        $spp->save();
+        return redirect('/spp')->with('updated', 'Data Updated successfully!');
     }
 
     /**
@@ -110,9 +108,9 @@ class KelasController extends Controller
     public function destroy($id)
     {
         // dd($id);
-        $kelas = Kelas::findOrFail($id);
-        $kelas->delete();
+        $spp = Spp::find($id);
+        $spp->delete();
 
-        return redirect('/kelas')->with('deleted', 'Data Deleted successfully!');
+        return redirect('/spp')->with('deleted', 'Data Deleted successfully!');
     }
 }

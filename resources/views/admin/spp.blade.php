@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'Tambah Data Kelas')
+@section('title', 'Tambah Data SPP')
 
 @section('content')
 
@@ -9,19 +9,9 @@
   Tambah
 </button>
 
-@if (session('success'))
+@if (session('status'))
   <div class="alert alert-info" role="alert">
-      {{ session('success') }}
-      <button class="btn btn-box-tool pull-right" aria-label="Close"><i class="fa fa-times"></i></button>
-  </div>
-@elseif (session('updated'))
-  <div class="alert alert-warning" role="alert">
-      {{ session('updated') }}
-      <button class="btn btn-box-tool pull-right" aria-label="Close"><i class="fa fa-times"></i></button>
-  </div>
-@elseif (session('deleted'))
-<div class="alert alert-danger" role="alert">
-      {{ session('deleted') }}
+      {{ session('status') }}
       <button class="btn btn-box-tool pull-right" aria-label="Close"><i class="fa fa-times"></i></button>
   </div>
 @endif
@@ -35,25 +25,25 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="/kelas" method="post">
+        <form action="/spp" method="post">
             @csrf
             <div class="row align-items-center">
                 <div class="col-3">
-                    <label for="jurusan" class="col-form-label">Jurusan</label>
+                    <label for="tahun_spp" class="col-form-label">Tahun Ajar</label>
                 </div>
                 <div class="col-8 mb-2">
-                    <input type="text" name="jurusan" id="jurusan" class="form-control @error ('jurusan') is-invalid @enderror" value="{{ old('jurusan') }}">
-                      @error('jurusan')<div class="invalid-feedback">
+                    <input type="text" name="tahun_spp" id="tahun_spp" class="form-control @error ('tahun_spp') is-invalid @enderror" value="{{ old('tahun_spp') }}">
+                      @error('tahun_spp')<div class="invalid-feedback">
                         {{ $message }}
                       </div>@enderror
                 </div>
 
                 <div class="col-3">
-                    <label for="nama_kelas" class="col-form-label">Nama Kelas</label>
+                    <label for="nominal_spp" class="col-form-label">Nominal Bayar</label>
                 </div>
                 <div class="col-8">
-                    <input type="text" name="nama_kelas" id="nama_kelas" class="form-control @error ('nama_kelas') is-invalid @enderror" value="{{ old('nama_kelas') }}">
-                    @error('nama_kelas')<div class="invalid-feedback">
+                    <input type="text" name="nominal_spp" id="nominal_spp" class="form-control @error ('nominal_spp') is-invalid @enderror" value="{{ old('nominal_spp') }}">
+                    @error('nominal_spp')<div class="invalid-feedback">
                       {{ $message }}
                     </div>@enderror
                 </div>
@@ -73,21 +63,21 @@
   <thead class="table-dark">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Jurusan</th>
-      <th scope="col">Nama Kelas</th>
+      <th scope="col">Tahun Ajar</th>
+      <th scope="col">Nominal Bayar</th>
       <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
-    @foreach($kelas as $kls)
+    @foreach($spp as $sp)
     <tr>
       <th scope="row">{{$loop->iteration}}</th>
-      <td>{{$kls->jurusan}}</td>
-      <td>{{$kls->nama_kelas}}</td>
+      <td>{{$sp->tahun_spp}}</td>
+      <td>{{$sp->nominal_spp}}</td>
 
       <td>
-        <a href="{{ '/kelas/' . $kls->id_kelas . '/edit'}}" class="btn btn-warning btn-sm">Edit</a>
-        <form action="{{ '/kelas/' . $kls->id_kelas }}" method="POST" class="d-inline">
+        <a href="{{ '/spp/' . $sp->id_spp . '/edit'}}" class="btn btn-warning btn-sm">Edit</a>
+        <form action="{{ '/spp/' . $sp->id_spp }}" method="POST" class="d-inline">
             @method('DELETE')
             @csrf
             <button class="btn btn-danger btn-sm" type="submit" value="submit">Hapus</button>
