@@ -56,11 +56,14 @@
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-dashboard"></i> <span>ENTRI DATA</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="/SPP"><i class="fa fa-circle-o"></i> Entri Data SPP</a></li>
-                <li><a href="/kelas"><i class="fa fa-circle-o"></i> Entri Data Kelas</a></li>
+                <li><a href="/SPP"><i class="fa fa-circle-o"></i> Data SPP</a></li>
+                <li><a href="/kelas"><i class="fa fa-circle-o"></i> Data Kelas</a></li>
+                <li><a href="/siswa"><i class="fa fa-circle-o"></i> Data Siswa</a></li>
+                <li><a href="/petugas"><i class="fa fa-circle-o"></i> Data Petugas</a></li>
+                <li><a href="/pembayaran"><i class="fa fa-circle-o"></i> Data Pembayaran</a></li>
               </ul>
             </li>
           </ul>
@@ -100,6 +103,28 @@
               </div>
             </div>
             <div class="box-body">
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Tambah
+            </button>
+
+            @if (session('success'))
+              <div class="alert alert-info" role="alert">
+                  {{ session('success') }}
+                  <button class="btn btn-box-tool pull-right" aria-label="Close"><i class="fa fa-times"></i></button>
+              </div>
+            @elseif (session('updated'))
+              <div class="alert alert-warning" role="alert">
+                  {{ session('updated') }}
+                  <button class="btn btn-box-tool pull-right" aria-label="Close"><i class="fa fa-times"></i></button>
+              </div>
+            @elseif (session('deleted'))
+            <div class="alert alert-danger" role="alert">
+                  {{ session('deleted') }}
+                  <button class="btn btn-box-tool pull-right" aria-label="Close"><i class="fa fa-times"></i></button>
+              </div>
+            @endif
               
             @yield('content')
 

@@ -4,28 +4,6 @@
 
 @section('content')
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Tambah
-</button>
-
-@if (session('success'))
-  <div class="alert alert-info" role="alert">
-      {{ session('success') }}
-      <button class="btn btn-box-tool pull-right" aria-label="Close"><i class="fa fa-times"></i></button>
-  </div>
-@elseif (session('updated'))
-  <div class="alert alert-warning" role="alert">
-      {{ session('updated') }}
-      <button class="btn btn-box-tool pull-right" aria-label="Close"><i class="fa fa-times"></i></button>
-  </div>
-@elseif (session('deleted'))
-<div class="alert alert-danger" role="alert">
-      {{ session('deleted') }}
-      <button class="btn btn-box-tool pull-right" aria-label="Close"><i class="fa fa-times"></i></button>
-  </div>
-@endif
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

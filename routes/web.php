@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\KelasController;
-use App\Http\Controllers\SppController;
+// use App\Http\Controllers\SppController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,10 +25,12 @@ Route::get('/', function () {
 // route::put('/kelas/{id_kelas}/edit', [KelasController::class, 'update']);
 // route::delete('/kelas/{id_kelas}', [KelasController::class, 'destroy']);
 
-route::get('/spp', [SppController::class, 'index']);
-route::post('/spp', [SppController::class, 'store']);
-route::get('/spp/{id_spp}/edit', [SppController::class, 'edit']);
-route::put('/spp/{id_spp}/edit', [SppController::class, 'update']);
-route::delete('/spp/{id_spp}', [SppController::class, 'destroy']);
+// route::get('/spp', [SppController::class, 'index']);
+// route::post('/spp', [SppController::class, 'store']);
+// route::get('/spp/{id_spp}/edit', [SppController::class, 'edit']);
+// route::put('/spp/{id_spp}/edit', [SppController::class, 'update']);
+// route::delete('/spp/{id_spp}', [SppController::class, 'destroy']);
 
+Route::resource('/spp', 'App\Http\Controllers\SppController');
 Route::resource('/kelas', 'App\Http\Controllers\KelasController');
+Route::resource('/petugas', 'App\Http\Controllers\PetugasController');

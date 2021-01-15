@@ -4,18 +4,6 @@
 
 @section('content')
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Tambah
-</button>
-
-@if (session('status'))
-  <div class="alert alert-info" role="alert">
-      {{ session('status') }}
-      <button class="btn btn-box-tool pull-right" aria-label="Close"><i class="fa fa-times"></i></button>
-  </div>
-@endif
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

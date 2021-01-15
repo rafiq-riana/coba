@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- form start -->
-<form role="form" action="{{'/spp/' . $spp->id_spp . '/edit' }}" method="post">
+<form role="form" action="{{'/spp/' . $spp->id_spp }}" method="post">
 @method('PUT')
 @csrf
   <div class="row align-items-center">
