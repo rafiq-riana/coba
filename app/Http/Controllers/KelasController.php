@@ -40,12 +40,17 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'jurusan'=> 'required|max:30',
+            'nama_kelas'=> 'required|size:1'
+        ]);
+
         $kelas = new Kelas;
         $kelas->nama_kelas = $request->nama_kelas;
         $kelas->jurusan = $request->jurusan;
         $kelas->save();
 
-        return redirect('/kelas');
+        return redirect('/kelas')->with('status', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -83,7 +88,7 @@ class KelasController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'jurusan'=> 'required|max:255',
+            'jurusan'=> 'required|max:30',
             'nama_kelas'=> 'required|max:1'
         ]);
         

@@ -9,6 +9,13 @@
   Tambah
 </button>
 
+@if (session('status'))
+  <div class="alert alert-info" role="alert">
+      {{ session('status') }}
+      <button class="btn btn-box-tool pull-right" aria-label="Close"><i class="fa fa-times"></i></button>
+  </div>
+@endif
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -25,14 +32,20 @@
                     <label for="jurusan" class="col-form-label">Jurusan</label>
                 </div>
                 <div class="col-8 mb-2">
-                    <input type="text" name="jurusan" id="jurusan" class="form-control">
+                    <input type="text" name="jurusan" id="jurusan" class="form-control @error ('jurusan') is-invalid @enderror" value="{{ old('jurusan') }}">
+                      @error('jurusan')<div class="invalid-feedback">
+                        {{ $message }}
+                      </div>@enderror
                 </div>
 
                 <div class="col-3">
                     <label for="nama_kelas" class="col-form-label">Nama Kelas</label>
                 </div>
                 <div class="col-8">
-                    <input type="text" name="nama_kelas" id="nama_kelas" class="form-control">
+                    <input type="text" name="nama_kelas" id="nama_kelas" class="form-control @error ('nama_kelas') is-invalid @enderror" value="{{ old('nama_kelas') }}">
+                    @error('nama_kelas')<div class="invalid-feedback">
+                      {{ $message }}
+                    </div>@enderror
                 </div>
             </div>
 

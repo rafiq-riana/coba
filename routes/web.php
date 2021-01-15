@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\KelasController;
+use App\Http\Controllers\SiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,8 @@ Route::get('/', function () {
 // route::get('/kelas/{id_kelas}/edit', [KelasController::class, 'edit']);
 // route::put('/kelas/{id_kelas}/edit', [KelasController::class, 'update']);
 // route::delete('/kelas/{id_kelas}', [KelasController::class, 'destroy']);
+
+route::get('/siswa', [SiswaController::class, 'index']);
+route::post('/siswa', [SiswaController::class, 'store']);
 
 Route::resource('/kelas', 'App\Http\Controllers\KelasController');
