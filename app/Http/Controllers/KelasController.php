@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Kelas;
+use Illuminate\Http\Request;
 
 class KelasController extends Controller
 {
@@ -14,8 +14,12 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $kelas = Kelas::get();
-        return view('admin.kelas', ['kelas' => $kelas]);
+        //
+        $kelas = Kelas::select('id_kelas', 'nama_kelas', 'jurusan')
+        ->whereNull('deleted_at')
+        ->get();
+
+        return view('admin/kelas', ['kelas' => $kelas]);
     }
 
     /**
@@ -42,7 +46,6 @@ class KelasController extends Controller
         $kelas->save();
 
         return redirect('/kelas');
-        
     }
 
     /**
@@ -64,7 +67,10 @@ class KelasController extends Controller
      */
     public function edit($id)
     {
-        //
+        // dd($id);
+        $kelas = Kelas::find($id);
+        return view('admin.editkelas', compact('kelas'));
+        // return view('admin.editkelas', ['kelas' => $kelas]);
     }
 
     /**
@@ -76,7 +82,17 @@ class KelasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'jurusan'=> 'required|max:255',
+            'nama_kelas'=> 'required|max:1'
+        ]);
+        
+        $kelas = Kelas::find($id);
+        // dd($id);
+        $kelas->jurusan = $request->get('jurusan');
+        $kelas->nama_kelas = $request->get('nama_kelas');
+        $kelas->save();
+        return redirect('/kelas')->with('success', 'Post edited successfully!');
     }
 
     /**
@@ -85,9 +101,12 @@ class KelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kelas $id)
+    public function destroy($id)
     {
-        $id->delete();
+        // dd($id);
+        $kelas = Kelas::findOrFail($id);
+        $kelas->delete();
+
         return redirect('/kelas');
     }
 }

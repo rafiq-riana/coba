@@ -63,8 +63,9 @@
       <td>{{$kls->nama_kelas}}</td>
 
       <td>
-        <form action="{{ '/kelas/' . $kls->id_kelas }}" method="post">
-            @method('delete')
+        <a href="{{ '/kelas/' . $kls->id_kelas . '/edit'}}" class="btn btn-warning btn-sm">Edit</a>
+        <form action="{{ '/kelas/' . $kls->id_kelas }}" method="POST" class="d-inline">
+            @method('DELETE')
             @csrf
             <button class="btn btn-danger btn-sm" type="submit" value="submit">Hapus</button>
         </form>

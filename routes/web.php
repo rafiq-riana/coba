@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\KelasController;
+// use App\Http\Controllers\KelasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +14,14 @@ use App\Http\Controllers\KelasController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('main');
-// });
+Route::get('/', function () {
+    return view('main');
+});
 
-route::get('/kelas', [KelasController::class, 'index']);
-route::post('/kelas', [KelasController::class, 'store']);
-route::delete('/kelas/{id_kelas}', [KelasController::class, 'destroy']);
+// route::get('/kelas', [KelasController::class, 'index']);
+// route::post('/kelas', [KelasController::class, 'store']);
+// route::get('/kelas/{id_kelas}/edit', [KelasController::class, 'edit']);
+// route::put('/kelas/{id_kelas}/edit', [KelasController::class, 'update']);
+// route::delete('/kelas/{id_kelas}', [KelasController::class, 'destroy']);
 
-
+Route::resource('/kelas', 'App\Http\Controllers\KelasController');

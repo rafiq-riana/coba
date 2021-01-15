@@ -59,8 +59,8 @@
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                <li><a href="/siswa"><i class="fa fa-circle-o"></i> Entri Data Siswa</a></li>
+                <li><a href="/kelas"><i class="fa fa-circle-o"></i> Entri Data Kelas</a></li>
               </ul>
             </li>
           </ul>
@@ -110,7 +110,7 @@
       </div><!-- /.content-wrapper -->
 
       <footer class="main-footer">
-        <div class="pull-right hidden-xs">
+        <div class="pull-right hidden-xs bottom-0">
           <b>Version</b> 2.0
         </div>
         <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
